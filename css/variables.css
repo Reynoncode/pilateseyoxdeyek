@@ -2,20 +2,20 @@
 
 :root {
   /* ── Rənglər ───────────────────────────────── */
-  --clr-bg:             #EBEBEB;   /* Səhifə arxa fonu (boz) */
-  --clr-surface:        #FFFFFF;   /* Kart / panel */
-  --clr-surface-2:      #F5F5F5;   /* Input, ikinci səviyyə */
+  --clr-bg:             #F0EFEF;   /* Səhifə arxa fonu - açıq boz */
+  --clr-surface:        #FFFFFF;   /* Kart / panel - ağ */
+  --clr-surface-2:      #F7F7F7;   /* Input, ikinci səviyyə */
 
-  --clr-primary:        #5C8C5E;   /* Əsas yaşıl (muted) */
-  --clr-primary-dark:   #3D6B41;   /* Düymə / vurğu yaşıl */
+  --clr-primary:        #3D7A45;   /* Əsas yaşıl */
+  --clr-primary-dark:   #2D6A35;   /* Düymə yaşıl - tünd */
   --clr-primary-light:  #A8CBA9;   /* Progress bar, açıq */
   --clr-primary-bg:     #EAF3EA;   /* Yaşıl arxa fon (pill seçili) */
 
   --clr-text:           #1A1A1A;   /* Əsas mətn */
-  --clr-text-2:         #555555;   /* İkinci dərəcəli mətn */
+  --clr-text-2:         #4A4A4A;   /* İkinci dərəcəli mətn */
   --clr-text-muted:     #9B9B9B;   /* Placeholder, label */
-  --clr-border:         #E2E2E2;   /* Input / divider kənar xətt */
-  --clr-divider:        #EFEFEF;
+  --clr-border:         #E8E8E8;   /* Input / divider kənar xətt */
+  --clr-divider:        #F0F0F0;
 
   /* Makro rəngləri */
   --clr-protein:        #4A90D9;
@@ -70,9 +70,9 @@
   --r-pill: 999px;
 
   /* ── Kölgə ─────────────────────────────────── */
-  --shadow-sm:  0 1px 3px rgba(0,0,0,0.08);
-  --shadow-md:  0 4px 16px rgba(0,0,0,0.10);
-  --shadow-lg:  0 8px 32px rgba(0,0,0,0.13);
+  --shadow-sm:  0 1px 4px rgba(0,0,0,0.06);
+  --shadow-md:  0 4px 16px rgba(0,0,0,0.08);
+  --shadow-lg:  0 8px 32px rgba(0,0,0,0.12);
 
   /* ── Animasiya ─────────────────────────────── */
   --ease:       cubic-bezier(0.4, 0, 0.2, 1);
@@ -82,6 +82,27 @@
 
   /* ── Layout ────────────────────────────────── */
   --page-max:   430px;
-  --nav-h:      68px;
+  --nav-h:      72px;
   --header-h:   56px;
+
+  /* ── Legacy var compat (köhnə CSS-lər üçün) ── */
+  --bg:             var(--clr-bg);
+  --surface:        var(--clr-surface);
+  --surface-2:      var(--clr-surface-2);
+  --primary:        var(--clr-primary);
+  --primary-dark:   var(--clr-primary-dark);
+  --primary-light:  var(--clr-primary-light);
+  --primary-bg:     var(--clr-primary-bg);
+  --text:           var(--clr-text);
+  --text-muted:     var(--clr-text-muted);
+  --border:         var(--clr-border);
+  --protein:        var(--clr-protein);
+  --carb:           var(--clr-carb);
+  --fat:            var(--clr-fat);
+  --water:          var(--clr-water);
+  --shadow:         var(--shadow-md);
+  --radius:         var(--r-lg);
+  --radius-sm:      var(--r-sm);
+  --radius-lg:      var(--r-xl);
+  --nav-height:     var(--nav-h);
 }
