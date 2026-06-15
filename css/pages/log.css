@@ -1,76 +1,202 @@
-/* ─── Log ─── */
+/* ─── Log / Tarixçə ─── */
+
+/* Tarix naviqasiya - "< Bu gün >" */
 .date-nav {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  margin-bottom: 1rem;
-  background: var(--surface);
-  border-radius: var(--radius);
-  padding: 0.5rem 0.75rem;
+  justify-content: center;
+  gap: var(--sp-4);
+  margin-bottom: var(--sp-3);
+  background: var(--clr-surface);
+  border-radius: var(--r-lg);
+  padding: 12px var(--sp-4);
 }
-.date-arrow {
-  background: none; border: none;
-  font-size: 1.4rem; color: var(--text-muted);
-  cursor: pointer; padding: 0.25rem 0.5rem;
-  border-radius: var(--radius-sm);
-  transition: background 0.1s;
-}
-.date-arrow:hover { background: var(--bg); }
-.date-display { font-size: 0.95rem; font-weight: 600; color: var(--text); }
 
+.date-arrow {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  color: var(--clr-text-muted);
+  cursor: pointer;
+  padding: var(--sp-1) var(--sp-3);
+  border-radius: var(--r-sm);
+  transition: background var(--dur-fast);
+  display: flex;
+  align-items: center;
+}
+
+.date-arrow:hover {
+  background: var(--clr-bg);
+}
+
+.date-display {
+  font-size: var(--fs-base);
+  font-weight: var(--fw-semi);
+  color: var(--clr-text);
+  flex: 1;
+  text-align: center;
+}
+
+/* Günlük xülasə */
 .day-summary {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 0.5rem;
+  gap: var(--sp-2);
   text-align: center;
-  margin-bottom: 0.75rem;
+  margin-bottom: var(--sp-3);
 }
-.day-stat-val   { font-size: 1.1rem; font-weight: 700; color: var(--text); }
-.day-stat-label { font-size: 0.72rem; color: var(--text-muted); }
 
-/* Meal sections */
-.meal-section { margin-bottom: 1rem; }
+.day-stat-val {
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-bold);
+  color: var(--clr-text);
+  line-height: 1;
+}
+
+.day-stat-label {
+  font-size: var(--fs-xs);
+  color: var(--clr-text-muted);
+  margin-top: 3px;
+}
+
+/* Yemək bölmələri */
+.meal-section {
+  margin-bottom: var(--sp-3);
+}
+
 .meal-section-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 0.5rem;
+  margin-bottom: var(--sp-2);
 }
+
 .meal-section-title {
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--text-muted);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semi);
+  color: var(--clr-text-muted);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
 }
+
 .meal-section-kcal {
-  font-size: 0.82rem;
-  color: var(--primary);
-  font-weight: 600;
+  font-size: var(--fs-sm);
+  color: var(--clr-primary-dark);
+  font-weight: var(--fw-semi);
 }
+
 .log-meal-item {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  padding: 0.65rem 1rem;
-  background: var(--surface);
-  border-radius: var(--radius);
-  margin-bottom: 0.35rem;
+  gap: var(--sp-3);
+  padding: 12px var(--sp-4);
+  background: var(--clr-surface);
+  border-radius: var(--r-lg);
+  margin-bottom: var(--sp-2);
 }
-.log-meal-info { flex: 1; }
-.log-meal-name { font-size: 0.88rem; font-weight: 500; color: var(--text); }
-.log-meal-macros { font-size: 0.73rem; color: var(--text-muted); }
-.log-meal-kcal  { font-size: 0.9rem; font-weight: 600; color: var(--primary); }
-.log-meal-del {
-  background: none; border: none;
-  color: var(--text-muted); cursor: pointer;
-  font-size: 1rem; padding: 0.2rem 0.4rem;
-  border-radius: 4px;
-  transition: background 0.1s;
-}
-.log-meal-del:hover { background: #fee2e2; color: #dc2626; }
 
-/* Delete modal */
-.modal-sm { max-width: 320px; }
-.modal-sub { font-size: 0.85rem; color: var(--text-muted); margin: 0.5rem 0 1rem; }
-.modal-actions { display: flex; gap: 0.75rem; justify-content: flex-end; }
+.log-meal-info {
+  flex: 1;
+}
+
+.log-meal-name {
+  font-size: var(--fs-base);
+  font-weight: var(--fw-medium);
+  color: var(--clr-text);
+}
+
+.log-meal-macros {
+  font-size: var(--fs-xs);
+  color: var(--clr-text-muted);
+  margin-top: 2px;
+}
+
+.log-meal-kcal {
+  font-size: var(--fs-base);
+  font-weight: var(--fw-semi);
+  color: var(--clr-primary-dark);
+  flex-shrink: 0;
+}
+
+.log-meal-del {
+  background: none;
+  border: none;
+  color: var(--clr-text-muted);
+  cursor: pointer;
+  font-size: 1rem;
+  padding: var(--sp-1) var(--sp-2);
+  border-radius: var(--r-sm);
+  transition: background var(--dur-fast);
+}
+
+.log-meal-del:hover {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  display: none;
+  align-items: flex-end;
+  justify-content: center;
+  z-index: 200;
+  padding: var(--sp-4);
+}
+
+.modal-overlay.open {
+  display: flex;
+}
+
+.modal {
+  background: var(--clr-surface);
+  border-radius: var(--r-xl) var(--r-xl) var(--r-lg) var(--r-lg);
+  padding: var(--sp-6);
+  width: 100%;
+  max-width: var(--page-max);
+}
+
+.modal-sm {
+  max-width: 340px;
+  margin: auto;
+  border-radius: var(--r-xl);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--sp-4);
+}
+
+.modal-food-name {
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-bold);
+  color: var(--clr-text);
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  font-size: var(--fs-lg);
+  color: var(--clr-text-muted);
+  cursor: pointer;
+}
+
+.modal-sub {
+  font-size: var(--fs-sm);
+  color: var(--clr-text-muted);
+  margin: var(--sp-2) 0 var(--sp-5);
+}
+
+.modal-actions {
+  display: flex;
+  gap: var(--sp-3);
+  justify-content: flex-end;
+}
+
+.meal-type-select {
+  margin-top: var(--sp-3);
+}

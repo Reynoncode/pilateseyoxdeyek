@@ -1,154 +1,266 @@
 /* ─── Onboarding ─── */
+
 .onboarding-body {
-  background: var(--bg);
+  background: var(--clr-bg);
   min-height: 100vh;
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  padding: 1rem;
+  padding: 0;
 }
 
 .onboarding-wrapper {
   width: 100%;
-  max-width: 480px;
-  padding-top: 1rem;
+  max-width: var(--page-max);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: var(--sp-5) var(--sp-4) var(--sp-10);
 }
 
-/* Progress */
+/* Progress bar - şəkildəki kimi yuxarıda yaşıl xətt */
 .step-progress {
-  height: 4px;
-  background: var(--border);
-  border-radius: 2px;
+  height: 3px;
+  background: var(--clr-border);
+  border-radius: var(--r-pill);
   overflow: hidden;
-  margin-bottom: 0.5rem;
+  margin-bottom: var(--sp-2);
 }
+
 .step-progress-bar {
   height: 100%;
-  background: var(--primary);
-  border-radius: 2px;
-  transition: width 0.4s ease;
+  background: var(--clr-primary);
+  border-radius: var(--r-pill);
+  transition: width 0.4s var(--ease);
 }
+
+/* Step label - "Addım 1/5 · Sən kimsən" */
 .step-label {
-  font-size: 0.75rem;
-  color: var(--text-muted);
-  margin-bottom: 1.25rem;
+  font-size: var(--fs-xs);
+  color: var(--clr-text-muted);
+  font-weight: var(--fw-medium);
+  letter-spacing: 0.02em;
+  margin-bottom: var(--sp-5);
 }
 
-/* Step card */
+/* Step kart - ağ kart üzərindəki forma */
 .step-card {
-  background: var(--surface);
-  border-radius: var(--radius-lg);
-  padding: 1.75rem;
-  box-shadow: var(--shadow);
+  background: var(--clr-surface);
+  border-radius: var(--r-xl);
+  padding: var(--sp-6) var(--sp-5);
+  box-shadow: var(--shadow-md);
   display: none;
+  flex-direction: column;
+  gap: var(--sp-5);
+  flex: 1;
 }
-.step-card.active { display: block; }
 
+.step-card.active {
+  display: flex;
+}
+
+/* Başlıq - "Tanış olaq" */
 .step-title {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--text);
-  margin-bottom: 1.5rem;
+  font-size: var(--fs-2xl);
+  font-weight: var(--fw-bold);
+  color: var(--clr-text);
+  line-height: var(--lh-tight);
+  margin-bottom: 0;
 }
+
 .step-desc {
-  font-size: 0.9rem;
-  color: var(--text-muted);
-  margin-top: -1rem;
-  margin-bottom: 1.25rem;
+  font-size: var(--fs-base);
+  color: var(--clr-text-muted);
+  line-height: var(--lh-base);
+  margin-top: calc(-1 * var(--sp-3));
 }
 
-/* Step actions */
+/* Addım actions */
 .step-actions {
-  margin-top: 1.5rem;
-}
-.step-actions.two-col {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 0.75rem;
-  align-items: center;
+  margin-top: auto;
+  padding-top: var(--sp-4);
 }
 
-/* Activity list */
+.step-actions.two-col {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-4);
+}
+
+.step-actions.two-col .btn-ghost {
+  flex-shrink: 0;
+  font-size: var(--fs-base);
+  color: var(--clr-text-muted);
+  padding: 0;
+}
+
+.step-actions.two-col .btn-primary {
+  flex: 1;
+}
+
+/* Activity list - fəaliyyət seçimi */
 .activity-list {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-  margin-bottom: 0.5rem;
+  gap: var(--sp-2);
 }
+
 .activity-item {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  padding: 0.75rem 1rem;
-  border: 2px solid var(--border);
-  border-radius: var(--radius);
-  background: var(--bg);
+  gap: var(--sp-3);
+  padding: 13px var(--sp-4);
+  border: 1.5px solid var(--clr-border);
+  border-radius: var(--r-lg);
+  background: var(--clr-surface-2);
   cursor: pointer;
   text-align: left;
-  transition: all 0.15s;
+  transition: all var(--dur-fast);
+  -webkit-tap-highlight-color: transparent;
 }
-.activity-item:hover { border-color: var(--primary-light); }
-.activity-item.selected {
-  border-color: var(--primary);
-  background: var(--primary-bg);
-}
-.activity-icon { font-size: 1.4rem; }
-.activity-name { font-size: 0.9rem; font-weight: 600; color: var(--text); }
-.activity-sub  { font-size: 0.78rem; color: var(--text-muted); }
 
-/* Goal list */
+.activity-item:hover {
+  border-color: var(--clr-primary-light);
+  background: var(--clr-primary-bg);
+}
+
+.activity-item.selected {
+  border-color: var(--clr-primary);
+  background: var(--clr-primary-bg);
+}
+
+.activity-icon {
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+.activity-name {
+  font-size: var(--fs-base);
+  font-weight: var(--fw-semi);
+  color: var(--clr-text);
+}
+
+.activity-sub {
+  font-size: var(--fs-sm);
+  color: var(--clr-text-muted);
+  margin-top: 1px;
+}
+
+/* Goal list - hədəf seçimi */
 .goal-list {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-  margin-bottom: 0.5rem;
+  gap: var(--sp-2);
 }
+
 .goal-item {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  padding: 1rem;
-  border: 2px solid var(--border);
-  border-radius: var(--radius);
-  background: var(--bg);
+  gap: var(--sp-4);
+  padding: var(--sp-4);
+  border: 1.5px solid var(--clr-border);
+  border-radius: var(--r-lg);
+  background: var(--clr-surface-2);
   cursor: pointer;
   text-align: left;
-  transition: all 0.15s;
+  transition: all var(--dur-fast);
+  -webkit-tap-highlight-color: transparent;
 }
-.goal-item:hover { border-color: var(--primary-light); }
-.goal-item.selected {
-  border-color: var(--primary);
-  background: var(--primary-bg);
-}
-.goal-icon { font-size: 1.8rem; }
-.goal-name { font-size: 0.95rem; font-weight: 600; color: var(--text); }
-.goal-sub  { font-size: 0.78rem; color: var(--text-muted); }
 
-/* Plan card */
+.goal-item:hover {
+  border-color: var(--clr-primary-light);
+  background: var(--clr-primary-bg);
+}
+
+.goal-item.selected {
+  border-color: var(--clr-primary);
+  background: var(--clr-primary-bg);
+}
+
+.goal-icon {
+  font-size: 1.6rem;
+  flex-shrink: 0;
+}
+
+.goal-name {
+  font-size: var(--fs-base);
+  font-weight: var(--fw-semi);
+  color: var(--clr-text);
+}
+
+.goal-sub {
+  font-size: var(--fs-sm);
+  color: var(--clr-text-muted);
+  margin-top: 2px;
+}
+
+/* Plan card - step 5 nəticə */
 .plan-card {
-  background: var(--bg);
-  border-radius: var(--radius);
-  padding: 1.25rem;
-  margin-bottom: 1rem;
+  background: var(--clr-bg);
+  border-radius: var(--r-lg);
+  padding: var(--sp-5);
 }
+
+/* Böyük kalori rəqəmi - şəkildəki "-10832" kimi */
 .plan-kcal {
-  font-size: 2.5rem;
-  font-weight: 800;
-  color: var(--primary);
+  font-size: 2.8rem;
+  font-weight: var(--fw-black);
+  color: var(--clr-primary-dark);
   text-align: center;
+  line-height: 1;
+  letter-spacing: -0.02em;
 }
+
 .plan-kcal-label {
   text-align: center;
-  font-size: 0.8rem;
-  color: var(--text-muted);
-  margin-bottom: 1.25rem;
+  font-size: var(--fs-sm);
+  color: var(--clr-text-muted);
+  font-weight: var(--fw-medium);
+  margin-top: 4px;
+  margin-bottom: var(--sp-5);
 }
+
+/* BMR / TDEE alt sıra */
 .plan-bmr-row {
   display: flex;
   justify-content: space-between;
-  font-size: 0.75rem;
-  color: var(--text-muted);
-  margin-top: 0.75rem;
-  padding-top: 0.75rem;
-  border-top: 1px solid var(--border);
+  font-size: var(--fs-sm);
+  color: var(--clr-text-muted);
+  margin-top: var(--sp-4);
+  padding-top: var(--sp-3);
+  border-top: 1px solid var(--clr-border);
+}
+
+/* Pill group onboarding-da */
+.step-card .pill-group {
+  gap: var(--sp-2);
+}
+
+.step-card .pill-btn {
+  background: var(--clr-surface-2);
+  border-color: var(--clr-border);
+}
+
+/* Toast */
+.toast {
+  position: fixed;
+  bottom: var(--sp-8);
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: var(--clr-text);
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: var(--r-pill);
+  font-size: var(--fs-base);
+  font-weight: var(--fw-medium);
+  white-space: nowrap;
+  z-index: 200;
+  opacity: 0;
+  transition: opacity var(--dur-base), transform var(--dur-base);
+  pointer-events: none;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
 }

@@ -1,111 +1,175 @@
 /* ─── Search ─── */
+
 .search-bar-wrap {
   position: relative;
-  margin-bottom: 1rem;
-}
-.search-icon {
-  position: absolute;
-  left: 0.85rem; top: 50%;
-  transform: translateY(-50%);
-  font-size: 1rem;
-  pointer-events: none;
-}
-.search-main-input { padding-left: 2.5rem !important; }
-.search-clear {
-  position: absolute;
-  right: 0.75rem; top: 50%;
-  transform: translateY(-50%);
-  background: none; border: none;
-  color: var(--text-muted); cursor: pointer;
+  margin-bottom: var(--sp-3);
 }
 
-/* Categories */
+.search-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: var(--fs-base);
+  pointer-events: none;
+  color: var(--clr-text-muted);
+}
+
+.search-main-input {
+  padding-left: 40px !important;
+}
+
+.search-clear {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--clr-text-muted);
+  cursor: pointer;
+  font-size: var(--fs-base);
+  padding: var(--sp-1);
+}
+
+/* Kateqoriyalar */
 .category-scroll {
   display: flex;
-  gap: 0.4rem;
+  gap: var(--sp-2);
   overflow-x: auto;
-  padding-bottom: 0.25rem;
-  margin-bottom: 1rem;
+  padding-bottom: var(--sp-1);
+  margin-bottom: var(--sp-3);
   scrollbar-width: none;
 }
-.category-scroll::-webkit-scrollbar { display: none; }
+
+.category-scroll::-webkit-scrollbar {
+  display: none;
+}
+
 .category-pill {
   flex-shrink: 0;
-  padding: 0.35rem 0.9rem;
-  border-radius: 100px;
-  border: 1.5px solid var(--border);
-  background: var(--surface);
-  font-size: 0.8rem;
-  color: var(--text);
+  padding: 6px 14px;
+  border-radius: var(--r-pill);
+  border: 1.5px solid var(--clr-border);
+  background: var(--clr-surface);
+  font-size: var(--fs-sm);
+  color: var(--clr-text-2);
   cursor: pointer;
   white-space: nowrap;
-  transition: all 0.15s;
+  transition: all var(--dur-fast);
+  font-weight: var(--fw-medium);
 }
+
 .category-pill.active {
-  background: var(--primary);
-  border-color: var(--primary);
+  background: var(--clr-primary-dark);
+  border-color: var(--clr-primary-dark);
   color: #fff;
 }
 
-/* Results */
-.results-list { display: flex; flex-direction: column; gap: 0.25rem; }
+/* Nəticələr siyahısı */
+.results-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-1);
+}
+
 .result-food-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.75rem 1rem;
-  background: var(--surface);
-  border-radius: var(--radius);
+  padding: 13px var(--sp-4);
+  background: var(--clr-surface);
+  border-radius: var(--r-lg);
   cursor: pointer;
   border: 1.5px solid transparent;
-  transition: border-color 0.15s;
+  transition: border-color var(--dur-fast);
 }
-.result-food-item:hover { border-color: var(--primary-light); }
-.result-food-left { }
-.result-food-name { font-size: 0.9rem; font-weight: 500; color: var(--text); }
-.result-food-cat  { font-size: 0.73rem; color: var(--text-muted); }
-.result-food-right { text-align: right; }
-.result-food-kcal { font-size: 0.9rem; font-weight: 600; color: var(--primary); }
-.result-food-per  { font-size: 0.7rem; color: var(--text-muted); }
+
+.result-food-item:hover {
+  border-color: var(--clr-primary-light);
+}
+
+.result-food-name {
+  font-size: var(--fs-base);
+  font-weight: var(--fw-medium);
+  color: var(--clr-text);
+}
+
+.result-food-cat {
+  font-size: var(--fs-xs);
+  color: var(--clr-text-muted);
+  margin-top: 2px;
+}
+
+.result-food-kcal {
+  font-size: var(--fs-base);
+  font-weight: var(--fw-semi);
+  color: var(--clr-primary-dark);
+}
+
+.result-food-per {
+  font-size: var(--fs-xs);
+  color: var(--clr-text-muted);
+  text-align: right;
+  margin-top: 2px;
+}
 
 .section-title {
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: var(--text-muted);
-  margin: 1rem 0 0.5rem;
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semi);
+  color: var(--clr-text-muted);
+  margin: var(--sp-4) 0 var(--sp-2);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
 }
 
 /* Modal */
 .modal-overlay {
-  position: fixed; inset: 0;
-  background: rgba(0,0,0,0.45);
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
   display: none;
   align-items: flex-end;
   justify-content: center;
   z-index: 200;
-  padding: 1rem;
+  padding: var(--sp-4);
 }
-.modal-overlay.open { display: flex; }
+
+.modal-overlay.open {
+  display: flex;
+}
+
 .modal {
-  background: var(--surface);
-  border-radius: var(--radius-lg) var(--radius-lg) var(--radius) var(--radius);
-  padding: 1.5rem;
+  background: var(--clr-surface);
+  border-radius: var(--r-xl) var(--r-xl) var(--r-lg) var(--r-lg);
+  padding: var(--sp-6);
   width: 100%;
-  max-width: 480px;
+  max-width: var(--page-max);
   max-height: 90vh;
   overflow-y: auto;
 }
+
 .modal-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1rem;
+  margin-bottom: var(--sp-4);
 }
-.modal-food-name { font-size: 1.05rem; font-weight: 600; color: var(--text); }
+
+.modal-food-name {
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-bold);
+  color: var(--clr-text);
+}
+
 .modal-close {
-  background: none; border: none;
-  font-size: 1rem; color: var(--text-muted); cursor: pointer;
+  background: none;
+  border: none;
+  font-size: var(--fs-lg);
+  color: var(--clr-text-muted);
+  cursor: pointer;
 }
-.meal-type-select { margin-top: 0.75rem; }
+
+.meal-type-select {
+  margin-top: var(--sp-3);
+}

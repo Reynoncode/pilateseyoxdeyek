@@ -1,120 +1,218 @@
 /* ─── Dashboard ─── */
 
-/* Kalori ring kartı */
+/* Header greeting - "Günortan xeyir, solmaz" */
+.header-greeting {
+  font-size: var(--fs-sm);
+  color: var(--clr-text-muted);
+  font-weight: var(--fw-regular);
+}
+
+/* Kalori kart */
 .calorie-card {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
+  gap: var(--sp-4);
+  padding: var(--sp-6) var(--sp-5);
 }
+
+/* Ring - şəkildəki böyük dairə */
 .calorie-ring-wrap {
   position: relative;
-  width: 160px;
-  height: 160px;
+  width: 170px;
+  height: 170px;
 }
+
 .calorie-ring {
   width: 100%;
   height: 100%;
   transform: rotate(-90deg);
 }
+
 .ring-bg {
   fill: none;
-  stroke: var(--border);
-  stroke-width: 10;
+  stroke: var(--clr-border);
+  stroke-width: 11;
 }
+
 .ring-fill {
   fill: none;
-  stroke: var(--primary);
-  stroke-width: 10;
+  stroke: var(--clr-primary-dark);
+  stroke-width: 11;
   stroke-linecap: round;
-  transition: stroke-dashoffset 0.6s ease;
+  transition: stroke-dashoffset 0.7s var(--ease);
 }
+
 .ring-center {
   position: absolute;
-  top: 50%; left: 50%;
+  top: 50%;
+  left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
 }
+
 .ring-remaining {
-  font-size: 1.6rem;
-  font-weight: 800;
-  color: var(--text);
+  font-size: 1.9rem;
+  font-weight: var(--fw-black);
+  color: var(--clr-text);
   line-height: 1;
+  letter-spacing: -0.02em;
 }
+
 .ring-label {
-  font-size: 0.72rem;
-  color: var(--text-muted);
+  font-size: var(--fs-xs);
+  color: var(--clr-text-muted);
+  font-weight: var(--fw-medium);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
+
+/* Kalori stat-lar (Hədəf / Yedilən) */
 .calorie-stats {
   display: flex;
-  gap: 2.5rem;
+  gap: var(--sp-8);
 }
-.calorie-stat { text-align: center; }
-.stat-val { font-size: 1.1rem; font-weight: 700; color: var(--text); }
-.stat-val.consumed { color: var(--primary); }
-.stat-label { font-size: 0.72rem; color: var(--text-muted); }
 
-/* Makrolar */
-.macro-card { }
-.macro-bars { display: flex; flex-direction: column; gap: 0.75rem; }
+.calorie-stat {
+  text-align: center;
+}
+
+.stat-val {
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-bold);
+  color: var(--clr-text);
+  line-height: 1;
+}
+
+.stat-val.consumed {
+  color: var(--clr-primary-dark);
+}
+
+.stat-label {
+  font-size: var(--fs-xs);
+  color: var(--clr-text-muted);
+  margin-top: 3px;
+  font-weight: var(--fw-medium);
+}
+
+/* Makro bars kart */
+.macro-card {
+  padding: var(--sp-5);
+}
+
+.macro-bars {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+}
+
 .macro-bar-item { }
+
 .macro-bar-header {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 0.3rem;
+  align-items: center;
+  margin-bottom: var(--sp-2);
 }
-.macro-bar-name { font-size: 0.82rem; color: var(--text); }
-.macro-bar-val  { font-size: 0.82rem; color: var(--text-muted); }
 
-/* Su */
-.water-card { }
+.macro-bar-name {
+  font-size: var(--fs-base);
+  font-weight: var(--fw-medium);
+  color: var(--clr-text);
+}
+
+.macro-bar-val {
+  font-size: var(--fs-sm);
+  color: var(--clr-text-muted);
+}
+
+/* Su kart */
+.water-card {
+  padding: var(--sp-5);
+}
+
 .water-btns {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 0.5rem;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--sp-2);
 }
 
-/* Yemək siyahısı */
-.meals-card { }
+.water-btns .btn {
+  padding: 12px var(--sp-3);
+  font-size: var(--fs-base);
+  border-radius: var(--r-md);
+}
+
+/* Yemək kartı */
+.meals-card {
+  padding: var(--sp-5);
+}
+
 .card-header-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 0.75rem;
+  margin-bottom: var(--sp-4);
 }
-.link-small { font-size: 0.8rem; color: var(--primary); text-decoration: none; }
-.meal-list { display: flex; flex-direction: column; gap: 0.5rem; }
 
-.meal-item {
+.link-small {
+  font-size: var(--fs-sm);
+  color: var(--clr-primary-dark);
+  font-weight: var(--fw-medium);
+  text-decoration: none;
+}
+
+.meal-list {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.65rem 0;
-  border-bottom: 1px solid var(--border);
+  flex-direction: column;
 }
-.meal-item:last-child { border-bottom: none; }
-.meal-item-name { font-size: 0.88rem; font-weight: 500; color: var(--text); }
-.meal-item-sub  { font-size: 0.75rem; color: var(--text-muted); }
-.meal-item-kcal { font-size: 0.88rem; font-weight: 600; color: var(--primary); }
 
-/* FAB */
+.meal-item-name {
+  font-size: var(--fs-base);
+  font-weight: var(--fw-semi);
+  color: var(--clr-text);
+}
+
+.meal-item-sub {
+  font-size: var(--fs-sm);
+  color: var(--clr-text-muted);
+  margin-top: 2px;
+}
+
+.meal-item-kcal {
+  font-size: var(--fs-base);
+  font-weight: var(--fw-bold);
+  color: var(--clr-primary-dark);
+  flex-shrink: 0;
+}
+
+/* FAB - şəkildəki kimi mərkəzdə navbarda */
 .fab {
   position: fixed;
-  bottom: calc(var(--nav-height) + 1rem);
-  right: 1.25rem;
-  width: 52px;
-  height: 52px;
-  background: var(--primary);
+  bottom: calc(var(--nav-h) / 2);
+  left: 50%;
+  transform: translate(-50%, 50%);
+  width: 54px;
+  height: 54px;
+  background: var(--clr-primary-dark);
   color: #fff;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.6rem;
+  font-size: 26px;
   font-weight: 300;
   text-decoration: none;
-  box-shadow: 0 4px 16px rgba(74,163,108,0.4);
-  z-index: 50;
-  transition: transform 0.15s;
+  box-shadow: 0 4px 16px rgba(45,106,53,0.40);
+  z-index: 150;
+  transition: transform var(--dur-fast), box-shadow var(--dur-fast);
+  -webkit-tap-highlight-color: transparent;
 }
-.fab:hover { transform: scale(1.08); }
+
+.fab:active {
+  transform: translate(-50%, 50%) scale(0.92);
+}
