@@ -122,15 +122,14 @@ function renderFoodList(foods, listEl, emptyEl) {
   if (emptyEl) emptyEl.style.display = 'none';
 
   listEl.innerHTML = foods.map(f => `
-    <div class="result-item" onclick="openModal('${f.id}')">
-      <div class="result-main">
-        <div class="result-name">${UI.esc(f.name)}</div>
-        <div class="result-meta">${f.calories} kkal / 100q</div>
+    <div class="result-food-item" onclick="openModal('${f.id}')">
+      <div class="result-food-left">
+        <div class="result-food-name">${UI.esc(f.name)}</div>
+        <div class="result-food-cat">P:${f.protein}q · K:${f.carbs}q · Y:${f.fat}q</div>
       </div>
-      <div class="result-macros">
-        <span class="protein-color">${f.protein}q</span>
-        <span class="carb-color">${f.carbs}q</span>
-        <span class="fat-color">${f.fat}q</span>
+      <div class="result-food-right">
+        <div class="result-food-kcal">${f.calories} kkal</div>
+        <div class="result-food-per">/ 100q</div>
       </div>
     </div>
   `).join('');
