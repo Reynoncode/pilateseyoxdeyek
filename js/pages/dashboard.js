@@ -79,7 +79,7 @@ function renderDayData() {
   /* Makro barlar */
   renderMacroBar('macroProtein', 'barProtein', totals.protein,   macros.protein, 'q');
   renderMacroBar('macroCarb',    'barCarb',    totals.carbs,     macros.carbs,   'q');
-  renderMacroBar('macroFat',     'macroFat',   totals.fat,       macros.fat,     'q');
+  renderMacroBar('macroFat',     'barFat',     totals.fat,       macros.fat,     'q');
 
   /* Su */
   const waterGlasses = dayLog.water || 0;
