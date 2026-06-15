@@ -1,26 +1,96 @@
-/* ─── Dashboard ─── */
+/* ─── Dashboard Page CSS ─── */
 
-/* Header greeting - "Günortan xeyir, solmaz" */
-.header-greeting {
-  font-size: var(--fs-sm);
-  color: var(--clr-text-muted);
-  font-weight: var(--fw-regular);
+/* ── Header ──────────────────────────────── */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--clr-bg);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px var(--sp-5);
+  border-bottom: 1px solid var(--clr-border);
 }
 
-/* Kalori kart */
+.header-left {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.header-greeting {
+  font-size: var(--fs-md);
+  font-weight: var(--fw-semi);
+  color: var(--clr-text);
+  line-height: 1.2;
+}
+
+.header-date {
+  font-size: var(--fs-sm);
+  color: var(--clr-text-muted);
+  font-weight: var(--fw-medium);
+}
+
+.header-avatar {
+  width: 38px;
+  height: 38px;
+  background: var(--clr-primary-bg);
+  border: 2px solid var(--clr-primary-light);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background var(--dur-fast);
+}
+
+.header-avatar:hover {
+  background: var(--clr-primary-light);
+}
+
+/* ── Page wrapper ─────────────────────────── */
+.page-wrapper {
+  flex: 1;
+  padding: var(--sp-4) var(--sp-5);
+  padding-bottom: calc(var(--nav-h) + var(--sp-8));
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+  max-width: var(--page-max);
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* ── Card base ────────────────────────────── */
+.card {
+  background: var(--clr-surface);
+  border-radius: var(--r-xl);
+  padding: var(--sp-5);
+  box-shadow: var(--shadow-sm);
+}
+
+.card-title {
+  font-size: var(--fs-md);
+  font-weight: var(--fw-bold);
+  color: var(--clr-text);
+  margin-bottom: var(--sp-4);
+}
+
+/* ── Kalori ring ──────────────────────────── */
 .calorie-card {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: var(--sp-4);
-  padding: var(--sp-6) var(--sp-5);
 }
 
-/* Ring - şəkildəki böyük dairə */
 .calorie-ring-wrap {
   position: relative;
-  width: 170px;
-  height: 170px;
+  width: 150px;
+  height: 150px;
 }
 
 .calorie-ring {
@@ -32,35 +102,29 @@
 .ring-bg {
   fill: none;
   stroke: var(--clr-border);
-  stroke-width: 11;
+  stroke-width: 10;
 }
 
 .ring-fill {
   fill: none;
   stroke: var(--clr-primary-dark);
-  stroke-width: 11;
+  stroke-width: 10;
   stroke-linecap: round;
-  transition: stroke-dashoffset 0.7s var(--ease);
+  transition: stroke-dashoffset 0.6s ease;
 }
 
 .ring-center {
   position: absolute;
-  top: 50%;
-  left: 50%;
+  top: 50%; left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 3px;
 }
 
 .ring-remaining {
-  font-size: 1.9rem;
+  font-size: 1.8rem;
   font-weight: var(--fw-black);
   color: var(--clr-text);
   line-height: 1;
-  letter-spacing: -0.02em;
 }
 
 .ring-label {
@@ -69,9 +133,9 @@
   font-weight: var(--fw-medium);
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  margin-top: 3px;
 }
 
-/* Kalori stat-lar (Hədəf / Yedilən) */
 .calorie-stats {
   display: flex;
   gap: var(--sp-8);
@@ -95,22 +159,20 @@
 .stat-label {
   font-size: var(--fs-xs);
   color: var(--clr-text-muted);
-  margin-top: 3px;
   font-weight: var(--fw-medium);
+  margin-top: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
 
-/* Makro bars kart */
-.macro-card {
-  padding: var(--sp-5);
-}
-
+/* ── Makro barlar ─────────────────────────── */
 .macro-bars {
   display: flex;
   flex-direction: column;
   gap: var(--sp-4);
 }
 
-.macro-bar-item { }
+.macro-bar-item {}
 
 .macro-bar-header {
   display: flex;
@@ -128,13 +190,29 @@
 .macro-bar-val {
   font-size: var(--fs-sm);
   color: var(--clr-text-muted);
+  font-weight: var(--fw-medium);
 }
 
-/* Su kart */
-.water-card {
-  padding: var(--sp-5);
+.progress-bar {
+  width: 100%;
+  height: 6px;
+  background: var(--clr-border);
+  border-radius: var(--r-pill);
+  overflow: hidden;
 }
 
+.progress-fill {
+  height: 100%;
+  border-radius: var(--r-pill);
+  transition: width var(--dur-slow) var(--ease);
+}
+
+.progress-fill.protein { background: var(--clr-protein); }
+.progress-fill.carb    { background: var(--clr-carb); }
+.progress-fill.fat     { background: var(--clr-fat); }
+.progress-fill.water   { background: var(--clr-water); }
+
+/* ── Su düymələri ─────────────────────────── */
 .water-btns {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -145,24 +223,31 @@
   padding: 12px var(--sp-3);
   font-size: var(--fs-base);
   border-radius: var(--r-md);
+  border: 1.5px solid var(--clr-primary);
+  color: var(--clr-primary-dark);
+  background: transparent;
+  font-weight: var(--fw-semi);
+  transition: all var(--dur-fast);
+  cursor: pointer;
 }
 
-/* Yemək kartı */
-.meals-card {
-  padding: var(--sp-5);
+.water-btns .btn:hover,
+.water-btns .btn:active {
+  background: var(--clr-primary-bg);
 }
 
+/* ── Bugünkü yeməklər ─────────────────────── */
 .card-header-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: var(--sp-4);
+  margin-bottom: var(--sp-3);
 }
 
 .link-small {
   font-size: var(--fs-sm);
   color: var(--clr-primary-dark);
-  font-weight: var(--fw-medium);
+  font-weight: var(--fw-semi);
   text-decoration: none;
 }
 
@@ -171,48 +256,131 @@
   flex-direction: column;
 }
 
+.meal-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--clr-divider);
+}
+
+.meal-item:last-child {
+  border-bottom: none;
+}
+
+.meal-item-left {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
 .meal-item-name {
   font-size: var(--fs-base);
   font-weight: var(--fw-semi);
   color: var(--clr-text);
 }
 
-.meal-item-sub {
+.meal-item-meta {
   font-size: var(--fs-sm);
   color: var(--clr-text-muted);
-  margin-top: 2px;
 }
 
 .meal-item-kcal {
   font-size: var(--fs-base);
   font-weight: var(--fw-bold);
   color: var(--clr-primary-dark);
-  flex-shrink: 0;
+  white-space: nowrap;
 }
 
-/* FAB - şəkildəki kimi mərkəzdə navbarda */
+/* ── Empty state ──────────────────────────── */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: var(--sp-8) var(--sp-4);
+  text-align: center;
+}
+
+.empty-icon {
+  font-size: 2rem;
+  opacity: 0.5;
+}
+
+.empty-text {
+  font-size: var(--fs-md);
+  font-weight: var(--fw-semi);
+  color: var(--clr-text-2);
+}
+
+.empty-sub {
+  font-size: var(--fs-sm);
+  color: var(--clr-text-muted);
+}
+
+/* ── FAB ──────────────────────────────────── */
 .fab {
   position: fixed;
-  bottom: calc(var(--nav-h) / 2);
-  left: 50%;
-  transform: translate(-50%, 50%);
-  width: 54px;
-  height: 54px;
+  bottom: calc(var(--nav-h) + var(--sp-4));
+  right: var(--sp-5);
+  width: 52px;
+  height: 52px;
   background: var(--clr-primary-dark);
   color: #fff;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 26px;
+  font-size: 1.6rem;
   font-weight: 300;
   text-decoration: none;
-  box-shadow: 0 4px 16px rgba(45,106,53,0.40);
-  z-index: 150;
+  box-shadow: 0 4px 16px rgba(61,107,65,0.4);
+  z-index: 50;
   transition: transform var(--dur-fast), box-shadow var(--dur-fast);
-  -webkit-tap-highlight-color: transparent;
 }
 
 .fab:active {
-  transform: translate(-50%, 50%) scale(0.92);
+  transform: scale(0.92);
+}
+
+/* ── Bottom Nav ───────────────────────────── */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: var(--page-max);
+  height: var(--nav-h);
+  background: var(--clr-surface);
+  border-top: 1px solid var(--clr-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  z-index: 100;
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: var(--sp-2) var(--sp-4);
+  text-decoration: none;
+  color: var(--clr-text-muted);
+  transition: color var(--dur-fast);
+}
+
+.nav-item.active {
+  color: var(--clr-primary-dark);
+}
+
+.nav-icon {
+  font-size: 1.3rem;
+  line-height: 1;
+}
+
+.nav-label {
+  font-size: 10px;
+  font-weight: var(--fw-medium);
 }
