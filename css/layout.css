@@ -1,0 +1,236 @@
+/* ═══════════════════════════════════════════════
+   LAYOUT.CSS
+   Səhifə wrapper, header, nav, page transitions
+   ═══════════════════════════════════════════════ */
+
+body {
+  font-family: var(--font);
+  background: var(--clr-bg);
+  color: var(--clr-text);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ── Mobil çərçivə ──────────────────────────── */
+.page-shell {
+  width: 100%;
+  max-width: var(--page-max);
+  min-height: 100vh;
+  background: var(--clr-bg);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+/* ── Header ─────────────────────────────────── */
+.page-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--clr-bg);
+  height: var(--header-h);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--sp-5);
+}
+
+.page-header__title {
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-bold);
+  color: var(--clr-text);
+}
+
+.page-header__action {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: var(--clr-text-2);
+  cursor: pointer;
+  transition: background var(--dur-fast);
+}
+
+.page-header__action:hover {
+  background: var(--clr-surface-2);
+}
+
+/* ── Əsas məzmun sahəsi ─────────────────────── */
+.page-content {
+  flex: 1;
+  padding: var(--sp-4) var(--sp-5);
+  padding-bottom: calc(var(--nav-h) + var(--sp-6));
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+}
+
+/* Nav olmayan səhifələr üçün (onboarding) */
+.page-content--no-nav {
+  padding-bottom: var(--sp-6);
+}
+
+/* ── Onboarding layout ──────────────────────── */
+.onboarding-shell {
+  width: 100%;
+  max-width: var(--page-max);
+  min-height: 100vh;
+  background: var(--clr-bg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: var(--sp-8) var(--sp-5) var(--sp-10);
+}
+
+.onboarding-card {
+  width: 100%;
+  background: var(--clr-surface);
+  border-radius: var(--r-xl);
+  padding: var(--sp-6);
+  box-shadow: var(--shadow-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-5);
+}
+
+.onboarding-top {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+
+.onboarding-title {
+  font-size: var(--fs-2xl);
+  font-weight: var(--fw-bold);
+  color: var(--clr-text);
+  line-height: var(--lh-tight);
+}
+
+.onboarding-sub {
+  font-size: var(--fs-base);
+  color: var(--clr-text-muted);
+  line-height: var(--lh-base);
+}
+
+.onboarding-fields {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+}
+
+.onboarding-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-4);
+  padding-top: var(--sp-2);
+}
+
+.onboarding-actions .btn {
+  flex: 1;
+}
+
+/* ── Addım göstəricisi ──────────────────────── */
+.step-indicator {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+/* ── Səhifə keçid animasiyaları ─────────────── */
+.page-enter {
+  animation: pageIn var(--dur-base) var(--ease) forwards;
+}
+
+.page-exit {
+  animation: pageOut var(--dur-fast) var(--ease) forwards;
+}
+
+@keyframes pageIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pageOut {
+  from { opacity: 1; transform: translateY(0); }
+  to   { opacity: 0; transform: translateY(-8px); }
+}
+
+/* ── Section başlıq ─────────────────────────── */
+.section-title {
+  font-size: var(--fs-base);
+  font-weight: var(--fw-semi);
+  color: var(--clr-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: var(--sp-1);
+}
+
+/* ── İki sütun grid ─────────────────────────── */
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-3);
+}
+
+/* ── Öğün bölməsi başlığı ───────────────────── */
+.meal-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--sp-2);
+}
+
+.meal-section-title {
+  font-size: var(--fs-md);
+  font-weight: var(--fw-bold);
+  color: var(--clr-text);
+}
+
+.meal-section-cal {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  color: var(--clr-text-muted);
+}
+
+/* ── Scroll helpers ─────────────────────────── */
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+/* ── Loading spinner ────────────────────────── */
+.spinner {
+  width: 24px;
+  height: 24px;
+  border: 2.5px solid var(--clr-border);
+  border-top-color: var(--clr-primary);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ── Responsive: masaüstündə ortalanmış görünüm */
+@media (min-width: 431px) {
+  body {
+    background: #D8D8D8;
+  }
+
+  .page-shell,
+  .onboarding-shell {
+    margin: 0 auto;
+    box-shadow: var(--shadow-lg);
+  }
+
+  .bottom-nav {
+    border-radius: 0;
+  }
+}

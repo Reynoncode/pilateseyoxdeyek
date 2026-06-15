@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NutriCoach – Jurnal</title>
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/pages/log.css" />
+</head>
+<body>
+
+  <header class="header">
+    <div class="header-title">Jurnal</div>
+  </header>
+
+  <main class="page-wrapper">
+
+    <!-- Tarix seçimi -->
+    <div class="date-nav">
+      <button class="date-arrow" onclick="changeDate(-1)">‹</button>
+      <div class="date-display" id="dateDisplay"></div>
+      <button class="date-arrow" onclick="changeDate(1)" id="nextDayBtn">›</button>
+    </div>
+
+    <!-- Gün xülasəsi -->
+    <div class="card day-summary">
+      <div class="day-stat">
+        <div class="day-stat-val" id="dayKcal">0</div>
+        <div class="day-stat-label">kkal</div>
+      </div>
+      <div class="day-stat">
+        <div class="day-stat-val protein-color" id="dayProtein">0q</div>
+        <div class="day-stat-label">Protein</div>
+      </div>
+      <div class="day-stat">
+        <div class="day-stat-val carb-color" id="dayCarb">0q</div>
+        <div class="day-stat-label">Karbohidrat</div>
+      </div>
+      <div class="day-stat">
+        <div class="day-stat-val fat-color" id="dayFat">0q</div>
+        <div class="day-stat-label">Yağ</div>
+      </div>
+    </div>
+
+    <!-- Öyünlər -->
+    <div id="mealSections"></div>
+
+    <!-- Empty state -->
+    <div id="emptyLog" class="empty-state" style="display:none">
+      <div class="empty-icon">📋</div>
+      <div class="empty-text">Bu gün üçün qeyd yoxdur</div>
+      <a href="add-meal.html" class="btn btn-primary" style="margin-top:1rem">Yemək əlavə et</a>
+    </div>
+
+    <div style="height: 5rem"></div>
+  </main>
+
+  <!-- Delete confirmation -->
+  <div class="modal-overlay" id="deleteModal" onclick="closeDeleteModal(event)">
+    <div class="modal modal-sm">
+      <div class="modal-food-name">Bu yeməyi sil?</div>
+      <div class="modal-sub" id="deleteItemName"></div>
+      <div class="modal-actions">
+        <button class="btn btn-ghost" onclick="closeDeleteModalBtn()">Ləğv et</button>
+        <button class="btn btn-danger" onclick="confirmDelete()">Sil</button>
+      </div>
+    </div>
+  </div>
+
+  <nav class="bottom-nav">
+    <a href="dashboard.html" class="nav-item">
+      <span class="nav-icon">🏠</span><span class="nav-label">Ana səhifə</span>
+    </a>
+    <a href="search.html" class="nav-item">
+      <span class="nav-icon">🔍</span><span class="nav-label">Axtarış</span>
+    </a>
+    <a href="log.html" class="nav-item active">
+      <span class="nav-icon">📋</span><span class="nav-label">Jurnal</span>
+    </a>
+    <a href="profile.html" class="nav-item">
+      <span class="nav-icon">👤</span><span class="nav-label">Profil</span>
+    </a>
+  </nav>
+
+  <script src="js/storage.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/pages/log.js"></script>
+</body>
+</html>

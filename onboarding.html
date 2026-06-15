@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NutriCoach – Başla</title>
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/pages/onboarding.css" />
+</head>
+<body class="onboarding-body">
+
+  <div class="onboarding-wrapper">
+    <!-- Progress bar -->
+    <div class="step-progress">
+      <div class="step-progress-bar" id="progressBar"></div>
+    </div>
+    <div class="step-label" id="stepLabel">Addım 1/5 · Sən kimsən</div>
+
+    <!-- ───────── STEP 1: Şəxsi məlumat ───────── -->
+    <div class="step-card active" id="step1">
+      <h2 class="step-title">Tanış olaq</h2>
+
+      <div class="form-group">
+        <label class="form-label">Sənə necə müraciət edək?</label>
+        <input class="input" type="text" id="name" placeholder="Ad" autocomplete="off" />
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Yaş</label>
+        <input class="input" type="number" id="age" placeholder="İl" min="10" max="100" />
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Cins</label>
+        <div class="pill-group" id="genderGroup">
+          <button class="pill-btn" data-val="male">Kişi</button>
+          <button class="pill-btn" data-val="female">Qadın</button>
+          <button class="pill-btn" data-val="other">Digər</button>
+        </div>
+      </div>
+
+      <div class="step-actions">
+        <button class="btn btn-primary btn-full" onclick="nextStep(1)">Davam et</button>
+      </div>
+    </div>
+
+    <!-- ───────── STEP 2: Bədən ölçüləri ───────── -->
+    <div class="step-card" id="step2">
+      <h2 class="step-title">Bədən ölçüləri</h2>
+
+      <div class="form-group">
+        <label class="form-label">Boy (sm)</label>
+        <input class="input" type="number" id="height" placeholder="məs. 172" min="100" max="250" />
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Hazırkı çəki (kg)</label>
+        <input class="input" type="number" id="currentWeight" placeholder="məs. 78" min="30" max="300" />
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Hədəf çəki (kg)</label>
+        <input class="input" type="number" id="targetWeight" placeholder="məs. 70" min="30" max="300" />
+      </div>
+
+      <div class="step-actions two-col">
+        <button class="btn btn-ghost" onclick="prevStep(2)">Geri</button>
+        <button class="btn btn-primary" onclick="nextStep(2)">Davam et</button>
+      </div>
+    </div>
+
+    <!-- ───────── STEP 3: Fəaliyyət səviyyəsi ───────── -->
+    <div class="step-card" id="step3">
+      <h2 class="step-title">Fəaliyyət səviyyən</h2>
+      <p class="step-desc">Həftəlik ortalama fəaliyyətini seç</p>
+
+      <div class="activity-list" id="activityGroup">
+        <button class="activity-item" data-val="sedentary">
+          <span class="activity-icon">🪑</span>
+          <div>
+            <div class="activity-name">Minimal</div>
+            <div class="activity-sub">Oturaq iş, az hərəkət</div>
+          </div>
+        </button>
+        <button class="activity-item" data-val="light">
+          <span class="activity-icon">🚶</span>
+          <div>
+            <div class="activity-name">Az aktiv</div>
+            <div class="activity-sub">Həftədə 1-3 gün idman</div>
+          </div>
+        </button>
+        <button class="activity-item" data-val="moderate">
+          <span class="activity-icon">🏃</span>
+          <div>
+            <div class="activity-name">Orta aktiv</div>
+            <div class="activity-sub">Həftədə 3-5 gün idman</div>
+          </div>
+        </button>
+        <button class="activity-item" data-val="active">
+          <span class="activity-icon">💪</span>
+          <div>
+            <div class="activity-name">Çox aktiv</div>
+            <div class="activity-sub">Həftədə 6-7 gün idman</div>
+          </div>
+        </button>
+        <button class="activity-item" data-val="veryActive">
+          <span class="activity-icon">🏋️</span>
+          <div>
+            <div class="activity-name">Ekstra aktiv</div>
+            <div class="activity-sub">Gündə 2 dəfə, ağır iş</div>
+          </div>
+        </button>
+      </div>
+
+      <div class="step-actions two-col">
+        <button class="btn btn-ghost" onclick="prevStep(3)">Geri</button>
+        <button class="btn btn-primary" onclick="nextStep(3)">Davam et</button>
+      </div>
+    </div>
+
+    <!-- ───────── STEP 4: Hədəf ───────── -->
+    <div class="step-card" id="step4">
+      <h2 class="step-title">Hədəfin nədir?</h2>
+      <p class="step-desc">Sənə uyğun planı hazırlayaq</p>
+
+      <div class="goal-list" id="goalGroup">
+        <button class="goal-item" data-val="lose">
+          <span class="goal-icon">📉</span>
+          <div class="goal-text">
+            <div class="goal-name">Çəki vermək</div>
+            <div class="goal-sub">Kalori defisiti ilə</div>
+          </div>
+        </button>
+        <button class="goal-item" data-val="maintain">
+          <span class="goal-icon">⚖️</span>
+          <div class="goal-text">
+            <div class="goal-name">Çəkini qorumaq</div>
+            <div class="goal-sub">Balanslı qidalanma</div>
+          </div>
+        </button>
+        <button class="goal-item" data-val="gain">
+          <span class="goal-icon">📈</span>
+          <div class="goal-text">
+            <div class="goal-name">Kütlə toplamaq</div>
+            <div class="goal-sub">Kalori artıqlığı ilə</div>
+          </div>
+        </button>
+      </div>
+
+      <div class="step-actions two-col">
+        <button class="btn btn-ghost" onclick="prevStep(4)">Geri</button>
+        <button class="btn btn-primary" onclick="nextStep(4)">Davam et</button>
+      </div>
+    </div>
+
+    <!-- ───────── STEP 5: Plan ───────── -->
+    <div class="step-card" id="step5">
+      <h2 class="step-title">Sənə özəl plan</h2>
+      <p class="step-desc">Mifflin-St Jeor düsturu və məqsədinə görə hesablandı.</p>
+
+      <div class="plan-card">
+        <div class="plan-kcal" id="planKcal">–</div>
+        <div class="plan-kcal-label">kkal gündəlik hədəf</div>
+
+        <div class="macro-list">
+          <div class="macro-row">
+            <span class="macro-dot protein"></span>
+            <span class="macro-name">Protein</span>
+            <span class="macro-val" id="planProtein">–</span>
+          </div>
+          <div class="macro-row">
+            <span class="macro-dot carb"></span>
+            <span class="macro-name">Karbohidrat</span>
+            <span class="macro-val" id="planCarb">–</span>
+          </div>
+          <div class="macro-row">
+            <span class="macro-dot fat"></span>
+            <span class="macro-name">Yağ</span>
+            <span class="macro-val" id="planFat">–</span>
+          </div>
+          <div class="macro-row">
+            <span class="macro-dot water"></span>
+            <span class="macro-name">Su</span>
+            <span class="macro-val" id="planWater">–</span>
+          </div>
+        </div>
+
+        <div class="plan-bmr-row">
+          <span id="planBMR">BMR –</span>
+          <span id="planTDEE">TDEE –</span>
+        </div>
+      </div>
+
+      <div class="step-actions two-col">
+        <button class="btn btn-ghost" onclick="prevStep(5)">Geri</button>
+        <button class="btn btn-primary" onclick="finishOnboarding()">İzləməyə başla</button>
+      </div>
+    </div>
+
+    <!-- Error toast -->
+    <div class="toast" id="toast"></div>
+  </div>
+
+  <script src="js/storage.js"></script>
+  <script src="js/calculator.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/pages/onboarding.js"></script>
+</body>
+</html>

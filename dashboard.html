@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NutriCoach – Ana Ekran</title>
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/pages/dashboard.css" />
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header-left">
+      <div class="header-greeting" id="greeting">Salam 👋</div>
+      <div class="header-date" id="todayDate"></div>
+    </div>
+    <a href="profile.html" class="header-avatar" id="avatarBtn">👤</a>
+  </header>
+
+  <!-- Page -->
+  <main class="page-wrapper">
+
+    <!-- Kalori ring -->
+    <div class="card calorie-card">
+      <div class="calorie-ring-wrap">
+        <svg class="calorie-ring" viewBox="0 0 120 120">
+          <circle class="ring-bg" cx="60" cy="60" r="52" />
+          <circle class="ring-fill" id="ringFill" cx="60" cy="60" r="52"
+            stroke-dasharray="326.7" stroke-dashoffset="326.7" />
+        </svg>
+        <div class="ring-center">
+          <div class="ring-remaining" id="ringRemaining">–</div>
+          <div class="ring-label">qalıb</div>
+        </div>
+      </div>
+      <div class="calorie-stats">
+        <div class="calorie-stat">
+          <div class="stat-val" id="statGoal">–</div>
+          <div class="stat-label">Hədəf</div>
+        </div>
+        <div class="calorie-stat">
+          <div class="stat-val consumed" id="statConsumed">–</div>
+          <div class="stat-label">Yedilən</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Makrolar -->
+    <div class="card macro-card">
+      <h3 class="card-title">Makrolar</h3>
+      <div class="macro-bars">
+        <div class="macro-bar-item">
+          <div class="macro-bar-header">
+            <span class="macro-bar-name">Protein</span>
+            <span class="macro-bar-val" id="macroProtein">0 / – q</span>
+          </div>
+          <div class="progress-bar"><div class="progress-fill protein" id="barProtein" style="width:0%"></div></div>
+        </div>
+        <div class="macro-bar-item">
+          <div class="macro-bar-header">
+            <span class="macro-bar-name">Karbohidrat</span>
+            <span class="macro-bar-val" id="macroCarb">0 / – q</span>
+          </div>
+          <div class="progress-bar"><div class="progress-fill carb" id="barCarb" style="width:0%"></div></div>
+        </div>
+        <div class="macro-bar-item">
+          <div class="macro-bar-header">
+            <span class="macro-bar-name">Yağ</span>
+            <span class="macro-bar-val" id="macroFat">0 / – q</span>
+          </div>
+          <div class="progress-bar"><div class="progress-fill fat" id="barFat" style="width:0%"></div></div>
+        </div>
+        <div class="macro-bar-item">
+          <div class="macro-bar-header">
+            <span class="macro-bar-name">Su 💧</span>
+            <span class="macro-bar-val" id="macroWater">0 / – L</span>
+          </div>
+          <div class="progress-bar"><div class="progress-fill water" id="barWater" style="width:0%"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Su düymələri -->
+    <div class="card water-card">
+      <h3 class="card-title">Su əlavə et</h3>
+      <div class="water-btns">
+        <button class="btn btn-outline" onclick="addWater(0.2)">+200ml</button>
+        <button class="btn btn-outline" onclick="addWater(0.33)">+330ml</button>
+        <button class="btn btn-outline" onclick="addWater(0.5)">+500ml</button>
+        <button class="btn btn-outline" onclick="addWater(1)">+1L</button>
+      </div>
+    </div>
+
+    <!-- Bugünkü yeməklər -->
+    <div class="card meals-card">
+      <div class="card-header-row">
+        <h3 class="card-title">Bu gün</h3>
+        <a href="log.html" class="link-small">Hamısı →</a>
+      </div>
+      <div id="mealList" class="meal-list">
+        <div class="empty-state">
+          <div class="empty-icon">🍽️</div>
+          <div class="empty-text">Hələ yemək yoxdur</div>
+          <div class="empty-sub">Aşağıdakı + düyməsinə bas</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom spacing -->
+    <div style="height: 5rem"></div>
+  </main>
+
+  <!-- FAB -->
+  <a href="add-meal.html" class="fab">+</a>
+
+  <!-- Bottom nav -->
+  <nav class="bottom-nav">
+    <a href="dashboard.html" class="nav-item active">
+      <span class="nav-icon">🏠</span>
+      <span class="nav-label">Ana səhifə</span>
+    </a>
+    <a href="search.html" class="nav-item">
+      <span class="nav-icon">🔍</span>
+      <span class="nav-label">Axtarış</span>
+    </a>
+    <a href="log.html" class="nav-item">
+      <span class="nav-icon">📋</span>
+      <span class="nav-label">Jurnal</span>
+    </a>
+    <a href="profile.html" class="nav-item">
+      <span class="nav-icon">👤</span>
+      <span class="nav-label">Profil</span>
+    </a>
+  </nav>
+
+  <script src="js/storage.js"></script>
+  <script src="js/calculator.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/pages/dashboard.js"></script>
+</body>
+</html>

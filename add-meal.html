@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NutriCoach – Yemək əlavə et</title>
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/pages/add-meal.css" />
+</head>
+<body>
+
+  <header class="header">
+    <a href="dashboard.html" class="back-btn">←</a>
+    <div class="header-title">Yemək əlavə et</div>
+    <div style="width:2rem"></div>
+  </header>
+
+  <main class="page-wrapper">
+
+    <!-- Öyün seçimi -->
+    <div class="card">
+      <label class="form-label">Öyün</label>
+      <div class="pill-group" id="mealTypeGroup">
+        <button class="pill-btn active" data-val="breakfast">🌅 Səhər</button>
+        <button class="pill-btn" data-val="lunch">☀️ Nahar</button>
+        <button class="pill-btn" data-val="dinner">🌙 Axşam</button>
+        <button class="pill-btn" data-val="snack">🍎 Snack</button>
+      </div>
+    </div>
+
+    <!-- Axtarış -->
+    <div class="card">
+      <label class="form-label">Yemək axtar</label>
+      <div class="search-input-wrap">
+        <input class="input" type="text" id="searchInput" placeholder="məs. toyuq döşü, alma..." autocomplete="off" />
+        <button class="search-clear" id="clearSearch" onclick="clearSearch()" style="display:none">✕</button>
+      </div>
+      <div id="searchResults" class="search-results"></div>
+    </div>
+
+    <!-- Seçilmiş yemək -->
+    <div class="card selected-food-card" id="selectedFoodCard" style="display:none">
+      <div class="selected-food-header">
+        <div>
+          <div class="selected-food-name" id="selectedFoodName">–</div>
+          <div class="selected-food-per">100q üçün</div>
+        </div>
+        <button class="remove-btn" onclick="clearSelectedFood()">✕</button>
+      </div>
+
+      <div class="nutrition-preview">
+        <div class="nutrition-item">
+          <div class="nutrition-val" id="previewKcal">–</div>
+          <div class="nutrition-label">kkal</div>
+        </div>
+        <div class="nutrition-item">
+          <div class="nutrition-val protein-color" id="previewProtein">–</div>
+          <div class="nutrition-label">Protein</div>
+        </div>
+        <div class="nutrition-item">
+          <div class="nutrition-val carb-color" id="previewCarb">–</div>
+          <div class="nutrition-label">Karbohidrat</div>
+        </div>
+        <div class="nutrition-item">
+          <div class="nutrition-val fat-color" id="previewFat">–</div>
+          <div class="nutrition-label">Yağ</div>
+        </div>
+      </div>
+
+      <div class="portion-row">
+        <label class="form-label">Miqdar (q)</label>
+        <div class="portion-controls">
+          <button class="portion-btn" onclick="adjustPortion(-10)">−</button>
+          <input class="input portion-input" type="number" id="portionInput" value="100" min="1" max="2000" />
+          <button class="portion-btn" onclick="adjustPortion(10)">+</button>
+        </div>
+      </div>
+
+      <div class="total-preview">
+        <span>Toplam: </span>
+        <strong id="totalKcal">–</strong> kkal
+      </div>
+
+      <button class="btn btn-primary btn-full" onclick="addMeal()">Əlavə et ✓</button>
+    </div>
+
+    <!-- Manual əlavə -->
+    <div class="card">
+      <button class="collapse-toggle" onclick="toggleManual()" id="manualToggle">
+        ✏️ Əl ilə daxil et <span class="toggle-arrow" id="manualArrow">▾</span>
+      </button>
+      <div id="manualForm" style="display:none; margin-top: 1rem;">
+        <div class="form-group">
+          <label class="form-label">Yemək adı</label>
+          <input class="input" type="text" id="manualName" placeholder="Yemək adı" />
+        </div>
+        <div class="manual-macros">
+          <div class="form-group">
+            <label class="form-label">Kalori (kkal)</label>
+            <input class="input" type="number" id="manualKcal" placeholder="0" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Protein (q)</label>
+            <input class="input" type="number" id="manualProtein" placeholder="0" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Karbohidrat (q)</label>
+            <input class="input" type="number" id="manualCarb" placeholder="0" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Yağ (q)</label>
+            <input class="input" type="number" id="manualFat" placeholder="0" />
+          </div>
+        </div>
+        <button class="btn btn-primary btn-full" onclick="addManualMeal()">Əlavə et</button>
+      </div>
+    </div>
+
+    <div style="height: 5rem"></div>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="dashboard.html" class="nav-item">
+      <span class="nav-icon">🏠</span><span class="nav-label">Ana səhifə</span>
+    </a>
+    <a href="search.html" class="nav-item">
+      <span class="nav-icon">🔍</span><span class="nav-label">Axtarış</span>
+    </a>
+    <a href="log.html" class="nav-item">
+      <span class="nav-icon">📋</span><span class="nav-label">Jurnal</span>
+    </a>
+    <a href="profile.html" class="nav-item">
+      <span class="nav-icon">👤</span><span class="nav-label">Profil</span>
+    </a>
+  </nav>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="js/storage.js"></script>
+  <script src="js/db.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/pages/add-meal.js"></script>
+</body>
+</html>

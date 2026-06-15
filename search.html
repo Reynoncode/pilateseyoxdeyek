@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NutriCoach – Axtarış</title>
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/pages/search.css" />
+</head>
+<body>
+
+  <header class="header">
+    <div class="header-title">Yemək axtarışı</div>
+  </header>
+
+  <main class="page-wrapper">
+
+    <div class="search-bar-wrap">
+      <span class="search-icon">🔍</span>
+      <input class="input search-main-input" type="text" id="searchInput"
+        placeholder="Yemək adı axtar..." autocomplete="off" autofocus />
+      <button class="search-clear" id="clearBtn" onclick="clearSearch()" style="display:none">✕</button>
+    </div>
+
+    <!-- Kateqoriyalar -->
+    <div class="category-scroll" id="categoryScroll">
+      <button class="category-pill active" data-cat="all" onclick="filterCat(this,'all')">Hamısı</button>
+      <button class="category-pill" data-cat="ət" onclick="filterCat(this,'ət')">🥩 Ət</button>
+      <button class="category-pill" data-cat="quşçuluq" onclick="filterCat(this,'quşçuluq')">🍗 Quşçuluq</button>
+      <button class="category-pill" data-cat="balıq" onclick="filterCat(this,'balıq')">🐟 Balıq</button>
+      <button class="category-pill" data-cat="süd" onclick="filterCat(this,'süd')">🥛 Süd məhsulları</button>
+      <button class="category-pill" data-cat="taxıl" onclick="filterCat(this,'taxıl')">🌾 Taxıl</button>
+      <button class="category-pill" data-cat="meyvə" onclick="filterCat(this,'meyvə')">🍎 Meyvə</button>
+      <button class="category-pill" data-cat="tərəvəz" onclick="filterCat(this,'tərəvəz')">🥦 Tərəvəz</button>
+      <button class="category-pill" data-cat="paxlalı" onclick="filterCat(this,'paxlalı')">🫘 Paxlalı</button>
+      <button class="category-pill" data-cat="yağlar" onclick="filterCat(this,'yağlar')">🫒 Yağlar</button>
+      <button class="category-pill" data-cat="içki" onclick="filterCat(this,'içki')">🧃 İçkilər</button>
+    </div>
+
+    <!-- Nəticələr -->
+    <div id="resultsList" class="results-list"></div>
+
+    <!-- Empty state -->
+    <div id="emptyState" class="empty-state" style="display:none">
+      <div class="empty-icon">🔍</div>
+      <div class="empty-text">Nəticə tapılmadı</div>
+      <div class="empty-sub">Başqa söz sına və ya əl ilə əlavə et</div>
+      <a href="add-meal.html" class="btn btn-outline" style="margin-top:1rem">Əl ilə əlavə et</a>
+    </div>
+
+    <!-- Populyar -->
+    <div id="popularSection">
+      <h3 class="section-title">Tez-tez istifadə edilən</h3>
+      <div id="popularList" class="results-list"></div>
+    </div>
+
+    <div style="height: 5rem"></div>
+  </main>
+
+  <!-- Food detail modal -->
+  <div class="modal-overlay" id="foodModal" onclick="closeModal(event)">
+    <div class="modal">
+      <div class="modal-header">
+        <div class="modal-food-name" id="modalFoodName">–</div>
+        <button class="modal-close" onclick="closeModalBtn()">✕</button>
+      </div>
+      <div class="nutrition-preview">
+        <div class="nutrition-item">
+          <div class="nutrition-val" id="modalKcal">–</div>
+          <div class="nutrition-label">kkal/100q</div>
+        </div>
+        <div class="nutrition-item">
+          <div class="nutrition-val protein-color" id="modalProtein">–</div>
+          <div class="nutrition-label">Protein</div>
+        </div>
+        <div class="nutrition-item">
+          <div class="nutrition-val carb-color" id="modalCarb">–</div>
+          <div class="nutrition-label">Karbohidrat</div>
+        </div>
+        <div class="nutrition-item">
+          <div class="nutrition-val fat-color" id="modalFat">–</div>
+          <div class="nutrition-label">Yağ</div>
+        </div>
+      </div>
+      <div class="portion-row" style="margin-top:1rem">
+        <label class="form-label">Miqdar (q)</label>
+        <div class="portion-controls">
+          <button class="portion-btn" onclick="adjustModalPortion(-10)">−</button>
+          <input class="input portion-input" type="number" id="modalPortion" value="100" />
+          <button class="portion-btn" onclick="adjustModalPortion(10)">+</button>
+        </div>
+      </div>
+      <div class="meal-type-select">
+        <label class="form-label">Öyün</label>
+        <select class="input" id="modalMealType">
+          <option value="breakfast">🌅 Səhər</option>
+          <option value="lunch">☀️ Nahar</option>
+          <option value="dinner">🌙 Axşam</option>
+          <option value="snack">🍎 Snack</option>
+        </select>
+      </div>
+      <button class="btn btn-primary btn-full" onclick="addFromModal()" style="margin-top:1rem">Əlavə et ✓</button>
+    </div>
+  </div>
+
+  <nav class="bottom-nav">
+    <a href="dashboard.html" class="nav-item">
+      <span class="nav-icon">🏠</span><span class="nav-label">Ana səhifə</span>
+    </a>
+    <a href="search.html" class="nav-item active">
+      <span class="nav-icon">🔍</span><span class="nav-label">Axtarış</span>
+    </a>
+    <a href="log.html" class="nav-item">
+      <span class="nav-icon">📋</span><span class="nav-label">Jurnal</span>
+    </a>
+    <a href="profile.html" class="nav-item">
+      <span class="nav-icon">👤</span><span class="nav-label">Profil</span>
+    </a>
+  </nav>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="js/storage.js"></script>
+  <script src="js/db.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/pages/search.js"></script>
+</body>
+</html>

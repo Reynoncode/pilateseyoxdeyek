@@ -1,0 +1,154 @@
+/* ─── Onboarding ─── */
+.onboarding-body {
+  background: var(--bg);
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.onboarding-wrapper {
+  width: 100%;
+  max-width: 480px;
+  padding-top: 1rem;
+}
+
+/* Progress */
+.step-progress {
+  height: 4px;
+  background: var(--border);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+}
+.step-progress-bar {
+  height: 100%;
+  background: var(--primary);
+  border-radius: 2px;
+  transition: width 0.4s ease;
+}
+.step-label {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-bottom: 1.25rem;
+}
+
+/* Step card */
+.step-card {
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  box-shadow: var(--shadow);
+  display: none;
+}
+.step-card.active { display: block; }
+
+.step-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 1.5rem;
+}
+.step-desc {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-top: -1rem;
+  margin-bottom: 1.25rem;
+}
+
+/* Step actions */
+.step-actions {
+  margin-top: 1.5rem;
+}
+.step-actions.two-col {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+/* Activity list */
+.activity-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+.activity-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg);
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.15s;
+}
+.activity-item:hover { border-color: var(--primary-light); }
+.activity-item.selected {
+  border-color: var(--primary);
+  background: var(--primary-bg);
+}
+.activity-icon { font-size: 1.4rem; }
+.activity-name { font-size: 0.9rem; font-weight: 600; color: var(--text); }
+.activity-sub  { font-size: 0.78rem; color: var(--text-muted); }
+
+/* Goal list */
+.goal-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+.goal-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg);
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.15s;
+}
+.goal-item:hover { border-color: var(--primary-light); }
+.goal-item.selected {
+  border-color: var(--primary);
+  background: var(--primary-bg);
+}
+.goal-icon { font-size: 1.8rem; }
+.goal-name { font-size: 0.95rem; font-weight: 600; color: var(--text); }
+.goal-sub  { font-size: 0.78rem; color: var(--text-muted); }
+
+/* Plan card */
+.plan-card {
+  background: var(--bg);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+}
+.plan-kcal {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--primary);
+  text-align: center;
+}
+.plan-kcal-label {
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 1.25rem;
+}
+.plan-bmr-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border);
+}

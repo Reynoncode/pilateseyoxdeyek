@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NutriCoach – Profil</title>
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/pages/profile.css" />
+</head>
+<body>
+
+  <header class="header">
+    <div class="header-title">Profil</div>
+    <button class="header-save-btn" id="saveBtn" onclick="saveProfile()" style="display:none">Yadda saxla</button>
+  </header>
+
+  <main class="page-wrapper">
+
+    <!-- Avatar + ad -->
+    <div class="profile-hero">
+      <div class="profile-avatar" id="profileAvatar">👤</div>
+      <div class="profile-name" id="profileName">–</div>
+      <div class="profile-stats-row">
+        <div class="profile-stat">
+          <span class="profile-stat-val" id="profileBMI">–</span>
+          <span class="profile-stat-label">BMI</span>
+        </div>
+        <div class="profile-stat-divider"></div>
+        <div class="profile-stat">
+          <span class="profile-stat-val" id="profileBMR">–</span>
+          <span class="profile-stat-label">BMR</span>
+        </div>
+        <div class="profile-stat-divider"></div>
+        <div class="profile-stat">
+          <span class="profile-stat-val" id="profileTDEE">–</span>
+          <span class="profile-stat-label">TDEE</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Məlumat redaktəsi -->
+    <div class="card">
+      <h3 class="card-title">Şəxsi məlumatlar</h3>
+
+      <div class="form-group">
+        <label class="form-label">Ad</label>
+        <input class="input" type="text" id="editName" onchange="markDirty()" />
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Yaş</label>
+          <input class="input" type="number" id="editAge" onchange="markDirty()" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Cins</label>
+          <select class="input" id="editGender" onchange="markDirty()">
+            <option value="male">Kişi</option>
+            <option value="female">Qadın</option>
+            <option value="other">Digər</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Boy (sm)</label>
+          <input class="input" type="number" id="editHeight" onchange="markDirty()" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Çəki (kg)</label>
+          <input class="input" type="number" id="editWeight" onchange="markDirty()" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Hədəf çəki (kg)</label>
+        <input class="input" type="number" id="editTargetWeight" onchange="markDirty()" />
+      </div>
+    </div>
+
+    <!-- Fəaliyyət -->
+    <div class="card">
+      <h3 class="card-title">Fəaliyyət səviyyəsi</h3>
+      <select class="input" id="editActivity" onchange="markDirty()">
+        <option value="sedentary">Minimal (oturaq)</option>
+        <option value="light">Az aktiv (həftədə 1-3 gün)</option>
+        <option value="moderate">Orta aktiv (həftədə 3-5 gün)</option>
+        <option value="active">Çox aktiv (həftədə 6-7 gün)</option>
+        <option value="veryActive">Ekstra aktiv</option>
+      </select>
+    </div>
+
+    <!-- Hədəf -->
+    <div class="card">
+      <h3 class="card-title">Hədəf</h3>
+      <div class="pill-group" id="goalGroup">
+        <button class="pill-btn" data-val="lose" onclick="selectGoal(this)">📉 Vermək</button>
+        <button class="pill-btn" data-val="maintain" onclick="selectGoal(this)">⚖️ Qorumaq</button>
+        <button class="pill-btn" data-val="gain" onclick="selectGoal(this)">📈 Toplamaq</button>
+      </div>
+    </div>
+
+    <!-- Cari plan -->
+    <div class="card">
+      <h3 class="card-title">Gündəlik hədəflər</h3>
+      <div class="macro-list">
+        <div class="macro-row">
+          <span class="macro-dot protein"></span>
+          <span class="macro-name">Kalori</span>
+          <span class="macro-val" id="planKcalDisp">–</span>
+        </div>
+        <div class="macro-row">
+          <span class="macro-dot protein"></span>
+          <span class="macro-name">Protein</span>
+          <span class="macro-val" id="planProteinDisp">–</span>
+        </div>
+        <div class="macro-row">
+          <span class="macro-dot carb"></span>
+          <span class="macro-name">Karbohidrat</span>
+          <span class="macro-val" id="planCarbDisp">–</span>
+        </div>
+        <div class="macro-row">
+          <span class="macro-dot fat"></span>
+          <span class="macro-name">Yağ</span>
+          <span class="macro-val" id="planFatDisp">–</span>
+        </div>
+        <div class="macro-row">
+          <span class="macro-dot water"></span>
+          <span class="macro-name">Su</span>
+          <span class="macro-val" id="planWaterDisp">–</span>
+        </div>
+      </div>
+      <button class="btn btn-outline btn-full" onclick="recalculatePlan()" style="margin-top:1rem">
+        🔄 Planı yenidən hesabla
+      </button>
+    </div>
+
+    <!-- Məlumatları sıfırla -->
+    <div class="card danger-card">
+      <h3 class="card-title danger-title">Məlumatları sıfırla</h3>
+      <p class="danger-desc">Bütün data silinəcək. Bu əməliyyat geri qaytarıla bilməz.</p>
+      <button class="btn btn-danger btn-full" onclick="resetApp()">🗑️ Hər şeyi sil</button>
+    </div>
+
+    <div style="height: 5rem"></div>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="dashboard.html" class="nav-item">
+      <span class="nav-icon">🏠</span><span class="nav-label">Ana səhifə</span>
+    </a>
+    <a href="search.html" class="nav-item">
+      <span class="nav-icon">🔍</span><span class="nav-label">Axtarış</span>
+    </a>
+    <a href="log.html" class="nav-item">
+      <span class="nav-icon">📋</span><span class="nav-label">Jurnal</span>
+    </a>
+    <a href="profile.html" class="nav-item active">
+      <span class="nav-icon">👤</span><span class="nav-label">Profil</span>
+    </a>
+  </nav>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="js/storage.js"></script>
+  <script src="js/calculator.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/pages/profile.js"></script>
+</body>
+</html>
