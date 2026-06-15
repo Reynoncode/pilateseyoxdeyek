@@ -1,0 +1,175 @@
+/* ─── Search ─── */
+
+.search-bar-wrap {
+  position: relative;
+  margin-bottom: var(--sp-3);
+}
+
+.search-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: var(--fs-base);
+  pointer-events: none;
+  color: var(--clr-text-muted);
+}
+
+.search-main-input {
+  padding-left: 40px !important;
+}
+
+.search-clear {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--clr-text-muted);
+  cursor: pointer;
+  font-size: var(--fs-base);
+  padding: var(--sp-1);
+}
+
+/* Kateqoriyalar */
+.category-scroll {
+  display: flex;
+  gap: var(--sp-2);
+  overflow-x: auto;
+  padding-bottom: var(--sp-1);
+  margin-bottom: var(--sp-3);
+  scrollbar-width: none;
+}
+
+.category-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.category-pill {
+  flex-shrink: 0;
+  padding: 6px 14px;
+  border-radius: var(--r-pill);
+  border: 1.5px solid var(--clr-border);
+  background: var(--clr-surface);
+  font-size: var(--fs-sm);
+  color: var(--clr-text-2);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all var(--dur-fast);
+  font-weight: var(--fw-medium);
+}
+
+.category-pill.active {
+  background: var(--clr-primary-dark);
+  border-color: var(--clr-primary-dark);
+  color: #fff;
+}
+
+/* Nəticələr siyahısı */
+.results-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-1);
+}
+
+.result-food-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 13px var(--sp-4);
+  background: var(--clr-surface);
+  border-radius: var(--r-lg);
+  cursor: pointer;
+  border: 1.5px solid transparent;
+  transition: border-color var(--dur-fast);
+}
+
+.result-food-item:hover {
+  border-color: var(--clr-primary-light);
+}
+
+.result-food-name {
+  font-size: var(--fs-base);
+  font-weight: var(--fw-medium);
+  color: var(--clr-text);
+}
+
+.result-food-cat {
+  font-size: var(--fs-xs);
+  color: var(--clr-text-muted);
+  margin-top: 2px;
+}
+
+.result-food-kcal {
+  font-size: var(--fs-base);
+  font-weight: var(--fw-semi);
+  color: var(--clr-primary-dark);
+}
+
+.result-food-per {
+  font-size: var(--fs-xs);
+  color: var(--clr-text-muted);
+  text-align: right;
+  margin-top: 2px;
+}
+
+.section-title {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semi);
+  color: var(--clr-text-muted);
+  margin: var(--sp-4) 0 var(--sp-2);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  display: none;
+  align-items: flex-end;
+  justify-content: center;
+  z-index: 200;
+  padding: var(--sp-4);
+}
+
+.modal-overlay.open {
+  display: flex;
+}
+
+.modal {
+  background: var(--clr-surface);
+  border-radius: var(--r-xl) var(--r-xl) var(--r-lg) var(--r-lg);
+  padding: var(--sp-6);
+  width: 100%;
+  max-width: var(--page-max);
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--sp-4);
+}
+
+.modal-food-name {
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-bold);
+  color: var(--clr-text);
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  font-size: var(--fs-lg);
+  color: var(--clr-text-muted);
+  cursor: pointer;
+}
+
+.meal-type-select {
+  margin-top: var(--sp-3);
+}

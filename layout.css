@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+  /* ── Rənglər ───────────────────────────────── */
+  --clr-bg:             #F0EFEF;   /* Səhifə arxa fonu - açıq boz */
+  --clr-surface:        #FFFFFF;   /* Kart / panel - ağ */
+  --clr-surface-2:      #F7F7F7;   /* Input, ikinci səviyyə */
+
+  --clr-primary:        #3D7A45;   /* Əsas yaşıl */
+  --clr-primary-dark:   #2D6A35;   /* Düymə yaşıl - tünd */
+  --clr-primary-light:  #A8CBA9;   /* Progress bar, açıq */
+  --clr-primary-bg:     #EAF3EA;   /* Yaşıl arxa fon (pill seçili) */
+
+  --clr-text:           #1A1A1A;   /* Əsas mətn */
+  --clr-text-2:         #4A4A4A;   /* İkinci dərəcəli mətn */
+  --clr-text-muted:     #9B9B9B;   /* Placeholder, label */
+  --clr-border:         #E8E8E8;   /* Input / divider kənar xətt */
+  --clr-divider:        #F0F0F0;
+
+  /* Makro rəngləri */
+  --clr-protein:        #4A90D9;
+  --clr-carb:           #F5A623;
+  --clr-fat:            #E05C5C;
+  --clr-water:          #5BB5D9;
+
+  /* Status */
+  --clr-success:        #4CAF50;
+  --clr-warning:        #FF9800;
+  --clr-danger:         #F44336;
+
+  /* ── Tipqrafiya ────────────────────────────── */
+  --font:               'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  --fs-xs:    11px;
+  --fs-sm:    12px;
+  --fs-base:  14px;
+  --fs-md:    15px;
+  --fs-lg:    17px;
+  --fs-xl:    20px;
+  --fs-2xl:   24px;
+  --fs-3xl:   32px;
+  --fs-hero:  44px;
+
+  --fw-regular: 400;
+  --fw-medium:  500;
+  --fw-semi:    600;
+  --fw-bold:    700;
+  --fw-black:   800;
+
+  --lh-tight:   1.2;
+  --lh-snug:    1.35;
+  --lh-base:    1.5;
+
+  /* ── Boşluqlar ─────────────────────────────── */
+  --sp-1:   4px;
+  --sp-2:   8px;
+  --sp-3:   12px;
+  --sp-4:   16px;
+  --sp-5:   20px;
+  --sp-6:   24px;
+  --sp-8:   32px;
+  --sp-10:  40px;
+  --sp-12:  48px;
+
+  /* ── Kənar radius ──────────────────────────── */
+  --r-sm:   6px;
+  --r-md:   10px;
+  --r-lg:   14px;
+  --r-xl:   20px;
+  --r-pill: 999px;
+
+  /* ── Kölgə ─────────────────────────────────── */
+  --shadow-sm:  0 1px 4px rgba(0,0,0,0.06);
+  --shadow-md:  0 4px 16px rgba(0,0,0,0.08);
+  --shadow-lg:  0 8px 32px rgba(0,0,0,0.12);
+
+  /* ── Animasiya ─────────────────────────────── */
+  --ease:       cubic-bezier(0.4, 0, 0.2, 1);
+  --dur-fast:   150ms;
+  --dur-base:   250ms;
+  --dur-slow:   400ms;
+
+  /* ── Layout ────────────────────────────────── */
+  --page-max:   430px;
+  --nav-h:      72px;
+  --header-h:   56px;
+
+  /* ── Legacy var compat (köhnə CSS-lər üçün) ── */
+  --bg:             var(--clr-bg);
+  --surface:        var(--clr-surface);
+  --surface-2:      var(--clr-surface-2);
+  --primary:        var(--clr-primary);
+  --primary-dark:   var(--clr-primary-dark);
+  --primary-light:  var(--clr-primary-light);
+  --primary-bg:     var(--clr-primary-bg);
+  --text:           var(--clr-text);
+  --text-muted:     var(--clr-text-muted);
+  --border:         var(--clr-border);
+  --protein:        var(--clr-protein);
+  --carb:           var(--clr-carb);
+  --fat:            var(--clr-fat);
+  --water:          var(--clr-water);
+  --shadow:         var(--shadow-md);
+  --radius:         var(--r-lg);
+  --radius-sm:      var(--r-sm);
+  --radius-lg:      var(--r-xl);
+  --nav-height:     var(--nav-h);
+}
